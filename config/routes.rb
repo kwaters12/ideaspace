@@ -1,5 +1,7 @@
 Ideaspace::Application.routes.draw do
-  resources :projects
+  resources :projects do
+    get :like, on: :member
+  end
 
   root 'projects#index'
   # The priority is based upon order of creation: first created -> highest priority.

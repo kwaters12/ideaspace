@@ -14,11 +14,7 @@
   <%= f.text_field :title, class: "form-control" %>
   </div>
   <br>
-  <% if flash[:alert] %>
-                <div class="alert alert-danger"><%= flash[:alert] %></div>
-        <% elsif flash[:notice] %>
-                <div class="alert alert-success"><%= flash[:notice] %></div>        
-        <% end %>
+  
 
   <div class="form-group">
     <%= f.label :body, "Project Description" %>

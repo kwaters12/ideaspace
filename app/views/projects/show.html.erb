@@ -2,3 +2,8 @@
 <p><%= @project.body %></p>
 <br>
 <%= link_to "Home", projects_path, class: "btn btn-default" %>
+<% if session[:project_ids].present? && session[:project_ids].include?(@project.id) %>
+  <%= link_to "Liked", "javascript:void(0)", disabled: "disabled", class: "btn btn-primary" %>
+<% else %>
+<%= link_to "Like", like_project_path(@project), class: "btn btn-primary" %>
+<% end %>
