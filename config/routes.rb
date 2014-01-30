@@ -1,6 +1,8 @@
 Ideaspace::Application.routes.draw do
   resources :projects do
-    resources :discussions
+    resources :discussions do
+      get :like, on: :member
+    end
     get :like, on: :member
   end
 
