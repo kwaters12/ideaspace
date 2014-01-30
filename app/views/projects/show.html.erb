@@ -7,3 +7,30 @@
 <% else %>
 <%= link_to "Like", like_project_path(@project), class: "btn btn-primary" %>
 <% end %>
+<% if @discussion.errors.any? %>
+  <ul>
+    <% @discussion.errors.messages.values.each do |msg| %>
+    <li><%= msg.join " " %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for [@project, @discussion] do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Enter New discussion:" %>
+    <br>
+    <%= f.text_field :title, class: "form-control" %>
+    <br>
+    <br>
+    <%= f.text_area :body, class: "form-control"  %>
+  </div>
+  <%= f.submit class: "btn btn-default" %>
+<% end %>
+
+<hr>
+<h2>Discussions:</h2>
+<% @project.discussions.each do |discussion| %>
+  <%= discussion.body %>
+  <br>
+  <%= link_to "Delete Discussion", [@project, discussion], method: :delete, data: {confirm: "Are you sure you want to delete this answer?"}, class: "btn btn-default" %>
+  <hr>
+<% end %>

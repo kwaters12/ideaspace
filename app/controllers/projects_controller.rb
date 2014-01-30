@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @discussion = Discussion.new
     @project.hit_count += 1
     @project.save   
   end
