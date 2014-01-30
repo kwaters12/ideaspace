@@ -6,6 +6,10 @@ Ideaspace::Application.routes.draw do
     get :like, on: :member
   end
 
+  resources :discussions, only: [] do
+    resources :comments
+  end
+
   root 'projects#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

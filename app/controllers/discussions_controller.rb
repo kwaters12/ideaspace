@@ -1,10 +1,9 @@
 class DiscussionsController < ApplicationController
   before_action :set_project
-  before_action :set_discussion, only: [:destroy, :like, :edit]
+  before_action :set_discussion, only: [:show, :destroy, :like, :edit]
 
   def create
     @discussion = Discussion.new discussion_params
-    @project = Project.find params[:project_id]
     @discussion.project = @project
     if @discussion.save
       redirect_to @project, notice: "Thanks for your discussion!"
@@ -14,6 +13,10 @@ class DiscussionsController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
+    @comment = Comment.new 
   end
 
   def update
@@ -48,6 +51,8 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  private
+
   def set_discussion
     @discussion = Discussion.find(params[:id])
   end
@@ -55,6 +60,5 @@ class DiscussionsController < ApplicationController
   def set_project
     @project = Project.find params[:project_id]
   end
-
   
 end

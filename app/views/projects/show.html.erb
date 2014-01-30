@@ -29,7 +29,7 @@
 <hr>
 <h2>Discussions:</h2>
 <% @project.discussions.each do |discussion| %>
-  <h3><%= discussion.title %></h3>
+  <h3><%= link_to "#{discussion.title}", project_discussion_path(@project, discussion) %></h3>
   <%= discussion.body %>
 
   <br>
@@ -44,5 +44,4 @@
     <%= link_to "Like", like_project_discussion_path(@project, discussion), class: "btn btn-primary" %>
   <% end %>
 
-<hr>
 <% end %>
