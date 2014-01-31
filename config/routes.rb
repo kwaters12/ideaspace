@@ -3,9 +3,13 @@ Ideaspace::Application.routes.draw do
     resources :discussions do
       get :like, on: :member
     end
+    resources :tasks do
+      get :complete, on: :member
+    end
     get :like, on: :member
   end
 
+ # match "projects/:project_id/task/:id/complete" => "tasks#complete", :as => :complete_task
   resources :discussions, only: [] do
     resources :comments
   end

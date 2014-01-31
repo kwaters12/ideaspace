@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  
+
   before_action :set_project, only: [:edit, :show, :update, :destroy, :like]
 
   def index
@@ -17,8 +19,10 @@ class ProjectsController < ApplicationController
 
   def show
     @discussion = Discussion.new
+    @task = Task.new
     @project.hit_count += 1
     @project.save   
+    
   end
 
   def edit
@@ -57,4 +61,5 @@ class ProjectsController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   end
+
 end

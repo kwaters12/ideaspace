@@ -14,18 +14,21 @@
   <%= f.submit class: "btn btn-default" %>
 <% end %>
 <hr>
-<div class="well">
-
 <h2>Comments:</h2>
+
 <% @discussion.comments.each do |comment| %>
+  <div class="well">
    <%= comment.body %>
    <br>
-   <br>
-   <p>Created at: <%= comment.created_at.to_formatted_s(:long) %></p>
+   
+   <hr>
+   <div class="pull-left">
+    <p>Created at: <%= comment.created_at.to_formatted_s(:long) %></p>
+   </div>
   <br>
   <div class="pull-right">
     <%= link_to "Delete Comment", [@discussion, comment], method: :delete, data: {confirm: "Are you sure you want to delete this answer?"}, class: "btn btn-default" %>
   </div>
-  <hr>
+  
+  </div>
 <% end %>
-</div>
