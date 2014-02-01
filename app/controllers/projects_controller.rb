@@ -1,23 +1,26 @@
 class ProjectsController < ApplicationController
   
-
-  before_action :set_project, only: [:edit, :show, :update, :destroy, :like]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_project, only: [:edit, :update, :like]
 
   def index
     @projects = Project.find(:all)
   end
 
   def new
+
     @project = Project.new
   end
 
   def create
-    project = Project.new project_params
-    project.save
+    @project = current_user.projects.new project_params
+    @project.save
     redirect_to projects_path
+    @project.user = current_user
   end
 
   def show
+    @project = Project.find(params[:id])
     @discussion = Discussion.new
     @task = Task.new
     @project.hit_count += 1
@@ -39,8 +42,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
-    redirect_to projects_path
+    @project = Project.find(params[:id])
+    if @project.user == current_user
+      @project.destroy
+      redirect_to projects_path, notice: "Project Deleted Successfully"
+    else
+      redirect_to projects_path, notice: "Hey man, don't delete your buddy's project."      
+    end    
   end
 
   def like
@@ -59,7 +67,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
 end

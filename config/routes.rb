@@ -1,4 +1,5 @@
 Ideaspace::Application.routes.draw do
+  devise_for :users
   resources :projects do
     resources :discussions do
       get :like, on: :member
@@ -9,7 +10,6 @@ Ideaspace::Application.routes.draw do
     get :like, on: :member
   end
 
- # match "projects/:project_id/task/:id/complete" => "tasks#complete", :as => :complete_task
   resources :discussions, only: [] do
     resources :comments
   end

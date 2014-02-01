@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :destroy, :like, :edit, :complete]
 
   def create
-    @task = Task.new task_params
+    @task = current_user.tasks.new task_params
     @task.project = @project
     if @task.save
       redirect_to @project, notice: "Thanks for your task!"
@@ -50,6 +50,6 @@ class TasksController < ApplicationController
   end
 
   def set_project
-    @project = Project.find params[:project_id]
+    @project = current_user.projects.find params[:project_id]
   end
 end

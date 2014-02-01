@@ -1,10 +1,14 @@
 class DiscussionsController < ApplicationController
+
+  before_action :authenticate_user!, except: [:show]
   before_action :set_project
-  before_action :set_discussion, only: [:show, :destroy, :like, :edit]
+  before_action :set_discussion, only: [:like, :edit]
 
   def create
+
     @discussion = Discussion.new discussion_params
     @discussion.project = @project
+    @discussion.user = current_user
     if @discussion.save
       redirect_to @project, notice: "Thanks for your discussion!"
     else
@@ -16,13 +20,14 @@ class DiscussionsController < ApplicationController
   end
 
   def show
+    @discussion = Discussion.find(params[:id])
     @comment = Comment.new 
   end
 
   def update
     @discussion = Discussion.find(params[:id])
     @discussion.update_attributes(discussion_params)
-    redirect_to project_path
+    redirect_to @project
   end
 
   def discussion_params
@@ -30,11 +35,12 @@ class DiscussionsController < ApplicationController
   end
 
   def destroy
-    if @discussion.destroy
-      redirect_to @project, notice: "Answer deleted successfully"
+    @discussion = Discussion.find(params[:id])
+    if @discussion.user == current_user
+      @discussion.destroy    
+      redirect_to @project, notice: "Discussion deleted successfully"
     else
-      flash.now[:alert] = "We couldn't delete the answer"
-      render "projects/show"
+      redirect_to @project, notice: "Not cool man."      
     end
   end
 
@@ -54,7 +60,7 @@ class DiscussionsController < ApplicationController
   private
 
   def set_discussion
-    @discussion = Discussion.find(params[:id])
+    @discussion = current_user.discussions.find(params[:id])
   end
 
   def set_project

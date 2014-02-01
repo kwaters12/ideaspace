@@ -1,3 +1,50 @@
 @import 'bootstrap';
+@import 'fonts.css';
+
+body {padding-top: 50px;background-image: url(image-path('pixel_weave.png'));padding-left: 50px; }
+
+nav {height: 100px;}
+
+
+.navbar h1{ font: 'porter_sans_blockblock';}
+.navbar .nav {height: 100px;}
+.container {height: 100%; background-color:rgba(255,255,255,0.5); float: left; width: 50%;}
+.thought-bubble {
+  margin-top: -10px;
+  margin-left: 70px;
+  background-image: url(image-path('thought_bubble.png'));
+  background-repeat: no-repeat; 
+  padding-left: 35px;
+  padding-top: 10px;
+  background-size:160px 155px; 
+  height: 155px; 
+}
+
+.thought-bubble a {color: #3696df;}
+.thought-bubble a:hover {color: black; text-decoration: none;}
+.project-title h1 {background-color: #3696df; padding: 10px; color: white;}
+.project-title h3 {background-color: #3696df; padding: 10px; color: white;}
+.project-title a {color: white;}
+.project-title a:hover {color: #e4eef6; text-decoration: none;}
+.projects-list {margin-top: -30px;}
 
 .well {background-color: #f1f4f7;}
+.navbar {padding-right: 25px; padding-left: 50px;  background-color: #3696df; border-bottom: 1px solid black;}
+.navbar-fixed-top {height: 52px;}
+.navbar a{color: black;}
+.navbar a:hover{color: white; text-decoration: none;}
+.navbar p{font-weight:bold;}
+.tasks {
+  float: right; 
+  width: 30%; 
+  padding-left: 20px; 
+  padding-right: 20px; 
+  background-color:rgba(255,255,255,0.5);
+  margin-right: 30px;
+}
+.tasks ul {list-style-type: square;}
+.btn {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
