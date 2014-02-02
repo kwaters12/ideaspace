@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_project, only: [:edit, :update, :like]
+  before_action :set_project, only: [:edit, :update]
 
   def index
     @projects = Project.find(:all)
@@ -52,6 +52,7 @@ class ProjectsController < ApplicationController
   end
 
   def like
+    @project = Project.find(params[:id])
     session[:project_ids] ||= []
 
     if session[:project_ids].include? params[:id].to_i

@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def to_param
+    first_name
+  end
+
   def like_for project
     likes.where(project_id: project.id).first
   end

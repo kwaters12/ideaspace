@@ -2,7 +2,7 @@ class DiscussionsController < ApplicationController
 
   before_action :authenticate_user!, except: [:show]
   before_action :set_project
-  before_action :set_discussion, only: [:like, :edit]
+  before_action :set_discussion, only: [:like]
 
   def create
 
@@ -17,6 +17,7 @@ class DiscussionsController < ApplicationController
   end
 
   def edit
+    @discussion = Discussion.find(params[:id])
   end
 
   def show
@@ -60,7 +61,7 @@ class DiscussionsController < ApplicationController
   private
 
   def set_discussion
-    @discussion = current_user.discussions.find(params[:id])
+    @discussion = Discussion.find(params[:id])
   end
 
   def set_project

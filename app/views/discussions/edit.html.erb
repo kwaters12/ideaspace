@@ -1,11 +1,14 @@
-<%= form_for [@project, @discussion] do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "Enter New discussion:" %>
-    <br>
-    <%= f.text_field :title, class: "form-control" %>
-    
-    <br>
-    <%= f.text_area :body, class: "form-control"  %>
-  </div>
-  <%= f.submit class: "btn btn-default" %>
-<% end %>
+<div class="container">
+  <br><br>
+  <%= form_for [@project, @discussion] do |f| %>
+    <div class="form-group">
+      <%= f.label :title, "Edit this discussion:" %>
+      <br>
+      <%= f.text_field :title, class: "form-control" %>
+      
+      <br>
+      <%= f.text_area :body, class: "form-control"  %>
+    </div>
+    <%= f.submit class: "btn btn-default" %>
+  <% end %>
+</div>

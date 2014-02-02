@@ -1,12 +1,68 @@
 @font-face {
-    font-family: 'porter_sans_blockblock';
-    src: url('../fonts/porter-sans-inline-block-webfont.eot');
-    src: url('../fonts/porter-sans-inline-block-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/porter-sans-inline-block-webfont.woff') format('woff'),
-         url('../fonts/porter-sans-inline-block-webfont.ttf') format('truetype'),
-         url('../fonts/porter-sans-inline-block-webfont.svg#porter_sans_blockblock') format('svg');
+  font-family: 'porter_sans_blockblock';
+  src:font-url('porter-sans-inline-block-webfont.eot');
+  src:font-url('porter-sans-inline-block-webfont.eot?#iefix') format('embedded-opentype'),
+    font-url('porter-sans-inline-block-webfont.svg#porter-sans-inline-block-webfont') format('svg'),
+    font-url('porter-sans-inline-block-webfont.woff') format('woff'),
+    font-url('porter-sans-inline-block-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'existencelight';
+  src:font-url('Existence-Light-webfont.eot');
+  src:font-url('Existence-Light-webfont.eot?#iefix') format('embedded-opentype'),
+    font-url('Existence-Light-webfont.svg#Existence-Light-webfont') format('svg'),
+    font-url('Existence-Light-webfont.woff') format('woff'),
+    font-url('Existence-Light-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'VegurRegular';
+    src: font-url('vegur-r_0.602-webfont.eot');
+    src: font-url('vegur-r_0.602-webfont.eot?#iefix') format('eot'),
+         font-url('vegur-r_0.602-webfont.woff') format('woff'),
+         font-url('vegur-r_0.602-webfont.ttf') format('truetype'),
+         font-url('vegur-r_0.602-webfont.svg#webfont43BoF65N') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
+@font-face {
+    font-family: 'VegurMedium';
+    src: font-url('vegur-m_0602-webfont.eot');
+    src: font-url('vegur-m_0602-webfont.eot?#iefix') format('eot'),
+         font-url('vegur-m_0602-webfont.woff') format('woff'),
+         font-url('vegur-m_0602-webfont.ttf') format('truetype'),
+         font-url('vegur-m_0602-webfont.svg#webfontzTW8rbLh') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'VegurLight';
+    src: font-url('vegur-l_0602-webfont.eot');
+    src: font-url('vegur-l_0602-webfont.eot?#iefix') format('eot'),
+         font-url('vegur-l_0602-webfont.woff') format('woff'),
+         font-url('vegur-l_0602-webfont.ttf') format('truetype'),
+         font-url('vegur-l_0602-webfont.svg#webfontTDl85Sua') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'VegurBold';
+    src: font-url('vegur-b_0.602-webfont.eot');
+    src: font-url('vegur-b_0.602-webfont.eot?#iefix') format('eot'),
+         font-url('vegur-b_0.602-webfont.woff') format('woff'),
+         font-url('vegur-b_0.602-webfont.ttf') format('truetype'),
+         font-url('vegur-b_0.602-webfont.svg#webfontKXEypgsh') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

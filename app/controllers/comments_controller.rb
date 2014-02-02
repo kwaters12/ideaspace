@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     @comment.discussion = @discussion
     @project = @discussion.project
     if @comment.save
+      CommentMailer.notify_owner(@comment).deliver
       redirect_to project_discussion_path(@project, @discussion), notice: "Thanks for your comment!"
     else
       render "discussions/show"
@@ -38,11 +39,9 @@ class CommentsController < ApplicationController
       @comment.destroy
       redirect_to project_discussion_path(@project, @discussion), notice: "Comment deleted successfully"
     else
-      redirect_to project_discussion_path(@project, @discussion), notice: "Hey man, don't delete your buddy's comment."
-      
+      redirect_to project_discussion_path(@project, @discussion), notice: "Hey man, don't delete your buddy's comment."      
     end
   end
-
 
   private
 

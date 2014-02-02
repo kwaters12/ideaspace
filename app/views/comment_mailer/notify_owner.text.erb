@@ -1,0 +1,8 @@
+Hello <%= @receiving_user.name_display %>,
+
+<%= @sending_user.name_display.capitalize %> has added a comment to your discussion: <%= link_to, @discussion.title, @discussion_url = @discussion %>
+
+The comment is: <%= @comment.body %>
+
+Regards,
+Idea Space Ltd.
