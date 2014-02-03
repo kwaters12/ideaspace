@@ -6,7 +6,7 @@ class DiscussionsController < ApplicationController
 
   def create
 
-    @discussion = Discussion.new discussion_params
+    @discussion = current_user.discussions.new discussion_params
     @discussion.project = @project
     @discussion.user = current_user
     if @discussion.save

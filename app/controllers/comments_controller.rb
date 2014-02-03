@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @discussion = Discussion.find(params[:discussion_id])
     @comment = current_user.comments.new comment_params
     @comment.user = current_user
+    @commenter = @comment.user
     @comment.discussion = @discussion
     @project = @discussion.project
     if @comment.save

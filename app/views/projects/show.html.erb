@@ -58,19 +58,22 @@
   <h2>Tasks for this Project:</h2>
   <br>
   <% @project.tasks.each do |task| %>
-    <li><p><%= task.name %> <br> Due: <%= task.due_date %>
+    <li><p><%= task.name %> <br> 
+      Owned by: Users <%= task.user_ids.to_sentence %><br>
+      Due: <%= task.due_date %>
       <% if task.completed == false %>
         <%= link_to "Complete?", complete_project_task_path(@project, task) %>
       <% else %>
         <%= "Complete" %>
       <% end %>
-        <%= link_to "Delete Task", [@project, task], method: :delete, data: {confirm: "Are you sure you want to delete this task?"} %> <br>
-        Owned by: <%= task.user_ids %>
+        <%= link_to "Delete Task", [@project, task], method: :delete, data: {confirm: "Are you sure you want to delete this task?"} %> 
+        
       </p></li>
   <% end %>
 
   <%= form_for [@project, @task] do |f| %>
     <p><%= f.text_field :name, class: "form-control" %></p>
+    <%= f.label :due_date %>
     <%= f.date_select :due_date %>
     <ul>
       <%= hidden_field_tag "task[user_ids][]", nil %>

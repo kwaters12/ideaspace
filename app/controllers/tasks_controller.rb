@@ -42,6 +42,7 @@ class TasksController < ApplicationController
   def complete
     @task.completed = true
     @task.save
+    
     redirect_to @project
   end
 
