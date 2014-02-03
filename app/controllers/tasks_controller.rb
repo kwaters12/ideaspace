@@ -6,7 +6,6 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new task_params
     @task.project = @project
-    @user_name = @task.user.name
     if @task.save
       redirect_to @project, notice: "Thanks for your task!"
     else
