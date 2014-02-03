@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.2'
+
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'letter_opener'
 gem 'rails_12factor', group: :production
 gem 'pg'
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
-
 
 
 # Use SCSS for stylesheets

@@ -14,6 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(function() {
-  $("#task_due_date").datepicker();
-});

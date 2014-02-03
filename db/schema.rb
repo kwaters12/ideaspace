@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201235209) do
+ActiveRecord::Schema.define(version: 20140131041804) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "assignments", force: true do |t|
+    t.integer  "user_id"
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
-  add_index "assignments", ["task_id"], name: "index_assignments_on_task_id"
-  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
+  add_index "assignments", ["task_id"], name: "index_assignments_on_task_id", using: :btree
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -29,12 +32,10 @@ ActiveRecord::Schema.define(version: 20140201235209) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
-  add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id"
-  add_index "comments", ["project_id"], name: "index_comments_on_project_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
 
   create_table "discussions", force: true do |t|
     t.string   "title"
@@ -46,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140201235209) do
     t.integer  "user_id"
   end
 
-  add_index "discussions", ["project_id"], name: "index_discussions_on_project_id"
-  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
+  add_index "discussions", ["project_id"], name: "index_discussions_on_project_id", using: :btree
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140201235209) do
     t.integer  "user_id"
   end
 
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "tasks", force: true do |t|
     t.string   "name"
@@ -71,8 +72,8 @@ ActiveRecord::Schema.define(version: 20140201235209) do
     t.integer  "user_id"
   end
 
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 20140201235209) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
