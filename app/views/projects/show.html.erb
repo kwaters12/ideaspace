@@ -55,9 +55,24 @@
 </div>
 <div class = "tasks">
   <br><br>
-  <h2>Tasks for this Project:</h2>
+  <h2>Completed Tasks:</h2>
   <br>
-  <% @project.tasks.each do |task| %>
+  <% @project.tasks.completed_tasks.each do |task| %>
+    <li><p><%= task.name %> <br> 
+      Owned by: <%= task.users.map { |x| "#{x.first_name} #{x.last_name}" }.join(", ") %><br>
+      Due: <%= task.due_date %>
+      <% if task.completed == false %>
+        <%= link_to "Complete?", complete_project_task_path(@project, task) %>
+      <% else %>
+        <%= "Complete" %>
+      <% end %>
+        <%= link_to "Delete Task", [@project, task], method: :delete, data: {confirm: "Are you sure you want to delete this task?"} %> 
+        
+      </p></li>
+  <% end %>
+  <h2>Upcoming Tasks:</h2>
+  <br>
+  <% @project.tasks.upcoming_tasks.each do |task| %>
     <li><p><%= task.name %> <br> 
       Owned by: <%= task.users.map { |x| "#{x.first_name} #{x.last_name}" }.join(", ") %><br>
       Due: <%= task.due_date %>
