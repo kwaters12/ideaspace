@@ -12,8 +12,10 @@
           <h3><%= link_to "#{project.title}", project %></h3>
         </div>
         <p><%= project.body %></p>
-        <%= link_to "Delete Project", project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn btn-default" %>
-        <%= link_to "Edit Project", edit_project_path(project), class: "btn btn-default" %>
+        <% if can? :manage, project %>
+          <%= link_to "Delete Project", project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn btn-default" %>
+          <%= link_to "Edit Project", edit_project_path(project), class: "btn btn-default" %>
+        <% end %>
         <p>Hit count:  <%= project.hit_count %></p>
         <p>Like count: <%= project.like_count %></p>
         <hr>

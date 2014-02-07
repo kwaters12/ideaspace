@@ -2,8 +2,7 @@
 <%= form_for @project do |f| %> 
   <% if @project.errors.any? %>
     <ul class="alert_message">
-      <% @project.errors.messages.values.each do |message| %>
-      
+      <% @project.errors.messages.values.each do |message| %>      
       <li><%= message.join "," %></li>
       <% end %>
     </ul>
@@ -13,17 +12,13 @@
   <%= f.label :title, "My Project" %>
   <%= f.text_field :title, class: "form-control" %>
   </div>
-  <br>
-  
+  <br>  
 
   <div class="form-group">
     <%= f.label :body, "Project Description" %>
     <%= f.text_area :body, class: "form-control" %>
     <br>
-  </div>
-
-  
-    
+  </div>    
 
   <%= f.submit "Submit", class: "btn btn-default" %>
   <%= link_to "Back", projects_path, class: "btn btn-default" %>

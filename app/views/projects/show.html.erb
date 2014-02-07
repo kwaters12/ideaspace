@@ -40,8 +40,10 @@
     <br>
     <br>
 
-    <%= link_to "Delete Discussion", [@project, discussion], method: :delete, data: {confirm: "Are you sure you want to delete this answer?"}, class: "btn btn-default" %>
-    <%= link_to "Edit Discussion", edit_project_discussion_path(@project, discussion), class: "btn btn-default" %>
+    <% if can? :manage, @discussion %>
+      <%= link_to "Delete Discussion", [@project, discussion], method: :delete, data: {confirm: "Are you sure you want to delete this answer?"}, class: "btn btn-default" %>    
+      <%= link_to "Edit Discussion", edit_project_discussion_path(@project, discussion), class: "btn btn-default" %>
+    <% end %>
 
     <% if session[:discussion_ids].present? && session[:discussion_ids].include?(discussion.id) %>
       <%= link_to "Liked", "javascript:void(0)", disabled: "disabled", class: "btn btn-primary" %>

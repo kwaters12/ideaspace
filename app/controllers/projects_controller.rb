@@ -1,14 +1,12 @@
 class ProjectsController < ApplicationController
   
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_project, only: [:edit, :update]
 
   def index
-    @projects = Project.find(:all)
+    @projects = Project.all
   end
 
   def new
-
     @project = Project.new
   end
 
@@ -29,6 +27,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
   end
 
   def project_params
@@ -65,10 +64,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  private
-
-  def set_project
-    @project = current_user.projects.find(params[:id])
+  def authorize
+    redirect_to root_path, alert: "access denied" unless can? :manage, @project
   end
 
 end
