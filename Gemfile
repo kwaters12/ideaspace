@@ -9,6 +9,7 @@ gem 'letter_opener'
 gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'cancan'
+gem 'paperclip'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
